@@ -172,9 +172,8 @@
     var url     = self.root_url+"/api/v0/login/confirm.json";
 
     self.Post(url, payload, function(resp) {
-      self.FireEvent("emailauth:login_confirm", self.script, resp);
-
       if (!!resp.success) {
+        self.FireEvent("emailauth:login_confirm", self.script, resp);
         self.addClass(self.authcode_form, "emailauth-hidden");
       } else { 
         self.removeClass(self.authcode_form, "emailauth-hidden");

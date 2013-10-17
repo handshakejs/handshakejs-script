@@ -62,8 +62,8 @@
 
     self.Post(url, payload, function(resp) {
       if (!!resp.success) {
-        self.addClass(self.authcode_form, "emailauth-hidden");
         self.FireEvent("emailauth:login_confirm", self.script, resp);
+        self.addClass(self.authcode_form, "emailauth-hidden");
       } else { 
         self.removeClass(self.authcode_form, "emailauth-hidden");
         alert(resp.error.message);
