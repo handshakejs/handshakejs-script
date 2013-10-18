@@ -2,22 +2,26 @@
 
 ## Usage
 
-Place the following where you want your login form to be displayed in your application.
-
-Replace the data-app_name value with your own and the root_url value with your own instance of emailauth. See [emailauth repo](https://github.com/scottmotte/emailauth) for more details.
+Place a script tag wherever you want the login form displayed.  
 
 ```html
-<script src='/build/emailauth.js' 
-        data-app_name="emailauthjstest" 
-        data-root_url="https://emailauth.herokuapp.com" />
+<script src='/path/to/emailauth.js' 
+        data-app_name="your_app_name" 
+        data-root_url="https://emailauth.herokuapp.com"></script>
+```
+
+Get the latest [emailauth.js here](https://github.com/scottmotte/emailauth-js/blob/master/build/emailauth.js). Replace the `data-app_name` with your own.
+
+Next, bind to the emailauth:login_confirm event to get the successful login data. This is where you would make an internal request to your application to set the session for the user.
+
+```html
 <script>
   emailauth.script.addEventListener('emailauth:login_confirm', function(e) {
+    // do something here local to your app to create a session for the user
     console.log(e.data);
   }, false); 
 </script>
 ```
-
-In the addEventListener portion, add your own bit of logic to log someone in. For example, set a session or a cookie.
 
 ## Dev Setup
 
