@@ -17,8 +17,10 @@ Next, bind to the emailauth:login_confirm event to get the successful login data
 ```html
 <script>
   emailauth.script.addEventListener('emailauth:login_confirm', function(e) {
-    // do something here local to your app to create a session for the user
     console.log(e.data);
+    $.post("/login/success", {email: e.data.identity.email}, function(data) {
+      window.location.href = "/dashboard";
+    });    
   }, false); 
 </script>
 ```
