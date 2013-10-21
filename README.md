@@ -25,6 +25,15 @@ Next, bind to the emailauth:login_confirm event to get the successful login data
 </script>
 ```
 
+Then you'd setup a route in your app at /login/success to do something like this (setting the session). Here's an example in ruby and there is also a [full example ruby app](https://github.com/scottmotte/emailauth-example-ruby).
+
+```ruby
+  post "/login/success" do
+    session[:user] = params[:email]
+    redirect "/dashboard"
+  end
+```
+
 ## Dev Setup
 
 ```
