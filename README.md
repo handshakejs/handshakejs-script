@@ -2,7 +2,7 @@
 
 ## Video Demo
 
-[![](https://raw.github.com/scottmotte/writings/master/emailauth-vimeo.png)](https://vimeo.com/77449937)
+[![](https://raw.github.com/scottmotte/emailauth-js/master/emailauth-vimeo.png)](https://vimeo.com/77449937)
 
 ## Usage
 
