@@ -40,6 +40,8 @@ Then you'd setup a route in your app at /login/success to do something like this
 
 ## Dev Setup
 
+Dev setup is if you want to work on the library yourself.
+
 ```
 $ npm install -g grunt-cli
 $ npm install
