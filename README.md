@@ -1,5 +1,9 @@
 # emailauth.js
 
+## Video Demo
+
+[![](https://raw.github.com/scottmotte/writings/master/emailauth-vimeo.png)](https://vimeo.com/77449937)
+
 ## Usage
 
 Place a script tag wherever you want the login form displayed.  
