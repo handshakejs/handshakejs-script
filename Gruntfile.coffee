@@ -6,8 +6,8 @@ module.exports = (grunt) ->
     src             = grunt.file.read("src/css/application.css")
     minified_css    = sqwish.minify(src)
 
-    combined = "(function(EmailAuth){" +
-      "EmailAuth.prototype._drawCss = function() {" +
+    combined = "(function(Handshake){" +
+      "Handshake.prototype._drawCss = function() {" +
         "this.css = '" + minified_css + "';" +
         "var style = document.createElement('style');" +
         "style.type = 'text/css';" +
@@ -18,23 +18,23 @@ module.exports = (grunt) ->
         "}" +
         "return document.body.appendChild(style);" +
       "};" +
-    "}(EmailAuth));"
+    "}(Handshake));"
 
-    grunt.file.write("src/emailauth/css.js", combined)
+    grunt.file.write("src/handshake/css.js", combined)
 
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json")
     banner: "/*! <%= pkg.name %>.js - <%= pkg.version %> - <%= grunt.template.today(\"yyyy-mm-dd\") %> - <%= pkg.author %> */\n"
     files: [
-      "src/emailauth.js",
-      "src/emailauth/*.js"
+      "src/handshake.js",
+      "src/handshake/*.js"
     ]
     uglify:
       options:
         banner: "<%= banner %>"
       en:
-        src: ["build/emailauth.js"]
-        dest: "build/emailauth.min.js"
+        src: ["build/handshake.js"]
+        dest: "build/handshake.min.js"
     concat:
       options:
         banner: "<%= banner %>"
@@ -42,9 +42,9 @@ module.exports = (grunt) ->
         stripBanners : true
       en:
         src: "<%= files %>"
-        dest: "build/emailauth.js"
+        dest: "build/handshake.js"
     jshint:
-      all: ['src/emailauth.js', 'src/emailauth/*.js']
+      all: ['src/handshake.js', 'src/handshake/*.js']
     connect:
       server:
         options:

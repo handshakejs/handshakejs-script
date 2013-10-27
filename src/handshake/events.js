@@ -1,4 +1,4 @@
-(function(EmailAuth){
+(function(Handshake){
   var self;
   var CLICK             = "click";
   var TOUCH_SUPPORTED   = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) ? true : false;
@@ -6,32 +6,32 @@
     CLICK               = "touchend";
   }
 
-  EmailAuth.prototype.events = function() {
+  Handshake.prototype.events = function() {
     self = this;
 
     this._submitEmailForm();
     this._submitAuthcodeForm();
   };
 
-  EmailAuth.prototype._submitEmailForm = function() {
+  Handshake.prototype._submitEmailForm = function() {
     this.email_form.addEventListener('submit', this.requestLogin, false);
   };
 
-  EmailAuth.prototype._submitAuthcodeForm = function() {
+  Handshake.prototype._submitAuthcodeForm = function() {
     this.authcode_form.addEventListener('submit', this.confirmLogin, false);
   };
 
-  EmailAuth.prototype._showEmailFormOnly = function() {
-    this.removeClass(this.email_form, "emailauth-hidden");
-    this.addClass(this.authcode_form, "emailauth-hidden");
+  Handshake.prototype._showEmailFormOnly = function() {
+    this.removeClass(this.email_form, "handshake-hidden");
+    this.addClass(this.authcode_form, "handshake-hidden");
   };
 
-  EmailAuth.prototype._showAuthcodeFormOnly = function() {
-    this.addClass(this.email_form, "emailauth-hidden");
-    this.removeClass(this.authcode_form, "emailauth-hidden");
+  Handshake.prototype._showAuthcodeFormOnly = function() {
+    this.addClass(this.email_form, "handshake-hidden");
+    this.removeClass(this.authcode_form, "handshake-hidden");
   };
 
-  EmailAuth.prototype.requestLogin = function(e) {
+  Handshake.prototype.requestLogin = function(e) {
     if (e) { e.preventDefault(); }
 
     var payload = {
@@ -50,7 +50,7 @@
     });
   };
 
-  EmailAuth.prototype.confirmLogin = function(e) {
+  Handshake.prototype.confirmLogin = function(e) {
     if (e) { e.preventDefault(); }
 
     var payload = {
@@ -62,13 +62,13 @@
 
     self.Post(url, payload, function(resp) {
       if (!!resp.success) {
-        self.FireEvent("emailauth:login_confirm", self.script, resp);
-        self.addClass(self.authcode_form, "emailauth-hidden");
+        self.FireEvent("handshake:login_confirm", self.script, resp);
+        self.addClass(self.authcode_form, "handshake-hidden");
       } else { 
-        self.removeClass(self.authcode_form, "emailauth-hidden");
+        self.removeClass(self.authcode_form, "handshake-hidden");
         alert(resp.error.message);
       }
     });
   };
 
-}(EmailAuth));
+}(Handshake));

@@ -1,7 +1,7 @@
 (function(exports){
-  var EmailAuth = function() {
-    if(!(this instanceof EmailAuth)){
-      return new EmailAuth();
+  var Handshake = function() {
+    if(!(this instanceof Handshake)){
+      return new Handshake();
     }
 
     this.uuid      = this.Uuid();
@@ -11,10 +11,10 @@
     return this;
   };
 
-  EmailAuth.prototype.init = function() {
+  Handshake.prototype.init = function() {
     if (this.script) {
-      this.script.className += " emailauth-script";
-      this.script.id        = "emailauth-script-"+this.uuid;
+      this.script.className += " handshake-script";
+      this.script.id        = "handshake-script-"+this.uuid;
       this.app_name         = this.script.getAttribute("data-app_name");
       this.root_url         = this.script.getAttribute("data-root_url");
       this.confirm_url      = this.script.getAttribute("data-confirm_url") || "/login/request.json";
@@ -23,7 +23,7 @@
         console.error("Warning: data-app_name not set on script tag. Set to the app_name you setup."); 
       }
       if (!this.root_url || this.root_url.length < 1) {
-        console.error("Warning: data-root_url not set on script tag. Set to the root url where you deployed emailauth. Likely, https://somedomain.herokuapp.com."); 
+        console.error("Warning: data-root_url not set on script tag. Set to the root url where you deployed handshake. Likely, https://somedomain.herokuapp.com."); 
       }
 
       this.draw();
@@ -33,6 +33,6 @@
     }
   };
 
-  exports.EmailAuth = EmailAuth;
+  exports.Handshake = Handshake;
 
 }(this));
