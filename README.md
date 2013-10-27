@@ -16,6 +16,14 @@ Place a script tag wherever you want the login form displayed.
 
 Get the latest [handshake.js here](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js). Replace the `data-app_name` with your own.
 
+Create your own subdomain by issuing the following request in terminal. Replace with your email and what you want to call your data-app_name.
+
+```bash
+curl -X POST https://handshake.herokuapp.com/api/v0/apps/create.json \
+-d "email=you@email.com" \
+-d "app_name=your_app_name"
+```
+
 Next, bind to the handshake:login_confirm event to get the successful login data. This is where you would make an internal request to your application to set the session for the user.
 
 ```html
