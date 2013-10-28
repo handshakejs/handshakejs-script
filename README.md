@@ -6,7 +6,13 @@
 
 ## Usage
 
-Place a script tag wherever you want the login form displayed.  
+### Register
+
+First register an app_name [here](http://handshakejs-signup.herokuapp.com/).
+
+### Add Script tag
+
+Place handshake.js script tag where you want the login form displayed on your site. 
 
 ```html
 <script src='/path/to/handshake.js' 
@@ -14,15 +20,7 @@ Place a script tag wherever you want the login form displayed.
         data-root_url="https://handshakejs.herokuapp.com"></script>
 ```
 
-Get the latest [handshake.js here](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js). Replace the `data-app_name` with your own.
-
-Create your own subdomain by issuing the following request in terminal. Replace with your email and what you want to call your data-app_name.
-
-```bash
-curl -X POST https://handshakejs.herokuapp.com/api/v0/apps/create.json \
--d "email=you@email.com" \
--d "app_name=your_app_name"
-```
+(Get the latest [handshake.js here](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js). Replace the `data-app_name` with your own.)
 
 Next, bind to the handshake:login_confirm event to get the successful login data. This is where you would make an internal request to your application to set the session for the user.
 
@@ -36,6 +34,8 @@ Next, bind to the handshake:login_confirm event to get the successful login data
   }, false); 
 </script>
 ```
+
+### Setup your route
 
 Then you'd setup a route in your app at /login/success to do something like this (setting the session). Here's an example in ruby and there is also a [full example ruby app](https://github.com/scottmotte/handshake-example-ruby).
 
