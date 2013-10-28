@@ -4,11 +4,11 @@
 
 ### Register
 
-First register an app_name [here](http://handshakejs-signup.herokuapp.com/).
+First, [register your app_name](http://handshakejs-signup.herokuapp.com/).
 
 ### Add Script tag
 
-Place handshake.js script tag where you want the login form displayed on your site. 
+Next, place the [handshake.js](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js) script tag where you want the login form displayed. 
 
 ```html
 <script src='/path/to/handshake.js' 
