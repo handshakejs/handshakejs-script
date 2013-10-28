@@ -1,5 +1,7 @@
 # handshake.js
 
+![](https://rawgithub.com/scottmotte/handshake-js/master/handshakejs.svg)
+
 ## Usage
 
 #### Register app_name
