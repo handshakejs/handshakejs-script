@@ -11,7 +11,7 @@ Place a script tag wherever you want the login form displayed.
 ```html
 <script src='/path/to/handshake.js' 
         data-app_name="your_app_name" 
-        data-root_url="https://handshake.herokuapp.com"></script>
+        data-root_url="https://handshakejs.herokuapp.com"></script>
 ```
 
 Get the latest [handshake.js here](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js). Replace the `data-app_name` with your own.
@@ -19,7 +19,7 @@ Get the latest [handshake.js here](https://github.com/scottmotte/handshake-js/bl
 Create your own subdomain by issuing the following request in terminal. Replace with your email and what you want to call your data-app_name.
 
 ```bash
-curl -X POST https://handshake.herokuapp.com/api/v0/apps/create.json \
+curl -X POST https://handshakejs.herokuapp.com/api/v0/apps/create.json \
 -d "email=you@email.com" \
 -d "app_name=your_app_name"
 ```
