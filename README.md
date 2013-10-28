@@ -2,11 +2,11 @@
 
 ## Usage
 
-### Register
+#### Register app_name
 
 First, [register your app_name](http://handshakejs-signup.herokuapp.com/).
 
-### Add Script tag
+#### Add script tag
 
 Next, place the [handshake.js](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js) script tag where you want the login form displayed. 
 
@@ -16,7 +16,7 @@ Next, place the [handshake.js](https://github.com/scottmotte/handshake-js/blob/m
         data-root_url="https://handshakejs.herokuapp.com"></script>
 ```
 
-(Get the latest [handshake.js here](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js). Replace the `data-app_name` with your own.)
+(Get the latest [handshake.js here](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js). Replace the `data-app_name` with the one you registered.)
 
 Next, bind to the handshake:login_confirm event to get the successful login data. This is where you would make an internal request to your application to set the session for the user.
 
@@ -31,7 +31,7 @@ Next, bind to the handshake:login_confirm event to get the successful login data
 </script>
 ```
 
-### Setup your route
+#### Setup your route
 
 Then you'd setup a route in your app at /login/success to do something like this (setting the session). Here's an example in ruby and there is also a [full example ruby app](https://github.com/scottmotte/handshake-example-ruby).
 
