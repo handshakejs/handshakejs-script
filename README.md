@@ -1,9 +1,5 @@
 # handshake.js
 
-## Video Demo
-
-[![](https://raw.github.com/scottmotte/handshake-js/master/handshake-vimeo.png)](https://vimeo.com/77449937)
-
 ## Usage
 
 ### Register
@@ -45,6 +41,10 @@ Then you'd setup a route in your app at /login/success to do something like this
     redirect "/dashboard"
   end
 ```
+
+## Video Demo
+
+[![](https://raw.github.com/scottmotte/handshake-js/master/handshake-vimeo.png)](https://vimeo.com/77449937)
 
 ## Dev Setup
 
