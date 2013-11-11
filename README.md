@@ -46,9 +46,7 @@ Then you'd setup a route in your app at /login/success to do something like this
 
 ## Video Demo
 
-The video demo is out of date. It still shows the gist of what you need to do, but defer to the README when confused. I will update the video in the future.
-
-[![](https://raw.github.com/scottmotte/handshake-js/master/handshake-vimeo.png)](https://vimeo.com/77449937)
+[![](https://raw.github.com/scottmotte/handshake-js/master/handshake-vimeo.png)](https://vimeo.com/79125268)
 
 ## Dev Setup
 
