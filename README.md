@@ -46,7 +46,7 @@ app.post('/login/success', function(req, res) {
 });
 ```
 
-There is a [full example nodejs app](https://github.com/scottmotte/handshake-example-nodejs).
+See [full example nodejs app](https://github.com/scottmotte/handshake-example-nodejs).
 
 ##### Ruby Example
 
@@ -57,7 +57,7 @@ post "/login/success" do
 end
 ```
 
-There is a [full example ruby app](https://github.com/scottmotte/handshake-example-ruby).
+See [full example ruby app](https://github.com/scottmotte/handshake-example-ruby).
 
 ## Video Demo
 
