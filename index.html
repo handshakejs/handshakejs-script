@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Handshake-js by scottmotte</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Handshake-js</h1>
+        <p>Open source JavaScript API for authenticating your users without requiring a password.</p>
+
+        <p class="view"><a href="https://github.com/scottmotte/handshake-js">View the Project on GitHub <small>scottmotte/handshake-js</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/scottmotte/handshake-js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/scottmotte/handshake-js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/scottmotte/handshake-js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="handshakejs" class="anchor" href="#handshakejs"><span class="octicon octicon-link"></span></a><a href="https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js">handshake.js</a>
+</h1>
+
+<p><img src="https://rawgithub.com/scottmotte/handshake-js/master/handshakejs.svg" alt=""></p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h4>
+<a name="register-app_name" class="anchor" href="#register-app_name"><span class="octicon octicon-link"></span></a>Register app_name</h4>
+
+<p>First, <a href="http://handshakejs-signup.herokuapp.com/">register your app_name</a>.</p>
+
+<h4>
+<a name="add-script-tag" class="anchor" href="#add-script-tag"><span class="octicon octicon-link"></span></a>Add script tag</h4>
+
+<p>Next, place the <a href="https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js">handshake.js</a> script tag where you want the login form displayed. </p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'/path/to/handshake.js'</span> 
+        <span class="na">data-app_name=</span><span class="s">"your_app_name"</span> 
+        <span class="na">data-root_url=</span><span class="s">"https://handshakejs.herokuapp.com"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>(Get the latest <a href="https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js">handshake.js here</a>. Replace the <code>data-app_name</code> with the one you registered.)</p>
+
+<p>Next, bind to the handshake:login_confirm event to get the successful login data. This is where you would make an internal request to your application to set the session for the user.</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script&gt;</span>
+  <span class="nx">handshake</span><span class="p">.</span><span class="nx">script</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'handshake:login_confirm'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"/login/success"</span><span class="p">,</span> <span class="p">{</span><span class="nx">email</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">email</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">"/dashboard"</span><span class="p">;</span>
+    <span class="p">});</span>    
+  <span class="p">},</span> <span class="kc">false</span><span class="p">);</span> 
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<h4>
+<a name="setup-your-loginsuccess-route" class="anchor" href="#setup-your-loginsuccess-route"><span class="octicon octicon-link"></span></a>Setup your /login/success route</h4>
+
+<p>Lastly, setup a /login/success route to set your app's session. There are examples below in different languages.</p>
+
+<h5>
+<a name="nodejs-example" class="anchor" href="#nodejs-example"><span class="octicon octicon-link"></span></a>Node.js Example</h5>
+
+<div class="highlight highlight-ruby"><pre><span class="n">app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">'/login/success'</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">email</span><span class="p">;</span>
+  <span class="n">res</span><span class="o">.</span><span class="n">redirect</span><span class="p">(</span><span class="s1">'/dashboard'</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>See <a href="https://github.com/scottmotte/handshake-example-nodejs">full example nodejs app</a>.</p>
+
+<h5>
+<a name="ruby-example" class="anchor" href="#ruby-example"><span class="octicon octicon-link"></span></a>Ruby Example</h5>
+
+<div class="highlight highlight-ruby"><pre><span class="n">post</span> <span class="s2">"/login/success"</span> <span class="k">do</span>
+  <span class="n">session</span><span class="o">[</span><span class="ss">:user</span><span class="o">]</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:email</span><span class="o">]</span>
+  <span class="n">redirect</span> <span class="s2">"/dashboard"</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>See <a href="https://github.com/scottmotte/handshake-example-ruby">full example ruby app</a>.</p>
+
+<h2>
+<a name="video-demo" class="anchor" href="#video-demo"><span class="octicon octicon-link"></span></a>Video Demo</h2>
+
+<p><a href="https://vimeo.com/79125268"><img src="https://raw.github.com/scottmotte/handshake-js/master/handshake-vimeo.png" alt=""></a></p>
+
+<h2>
+<a name="dev-setup" class="anchor" href="#dev-setup"><span class="octicon octicon-link"></span></a>Dev Setup</h2>
+
+<p>Dev setup is if you want to work on the library yourself.</p>
+
+<pre><code>$ npm install -g grunt-cli
+$ npm install
+$ grunt
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/scottmotte">scottmotte</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
