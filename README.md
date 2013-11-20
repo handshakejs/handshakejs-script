@@ -35,7 +35,7 @@ Next, bind to the handshake:login_confirm event to get the successful login data
 
 #### Setup your /login/success route
 
-Then you'd setup a route in your app at /login/success set your app's session. 
+Lastly, setup a /login/success route to set your app's session. There are examples below in different languages.
 
 ##### Node.js Example
 
