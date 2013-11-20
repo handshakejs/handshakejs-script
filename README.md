@@ -33,16 +33,31 @@ Next, bind to the handshake:login_confirm event to get the successful login data
 </script>
 ```
 
-#### Setup your route
+#### Setup your /login/success route
 
-Then you'd setup a route in your app at /login/success to do something like this (setting the session). Here's an example in ruby and there is also a [full example ruby app](https://github.com/scottmotte/handshake-example-ruby).
+Then you'd setup a route in your app at /login/success set your app's session. 
+
+##### Node.js Example
 
 ```ruby
-  post "/login/success" do
-    session[:user] = params[:email]
-    redirect "/dashboard"
-  end
+app.post('/login/success', function(req, res) {
+  req.session.user = req.body.email;
+  res.redirect('/dashboard');
+});
 ```
+
+There is a [full example nodejs app](https://github.com/scottmotte/handshake-example-nodejs).
+
+##### Ruby Example
+
+```ruby
+post "/login/success" do
+  session[:user] = params[:email]
+  redirect "/dashboard"
+end
+```
+
+There is a [full example ruby app](https://github.com/scottmotte/handshake-example-ruby).
 
 ## Video Demo
 
