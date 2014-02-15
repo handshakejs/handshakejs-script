@@ -26,7 +26,7 @@ Next, bind to the handshake:login_confirm event to get the successful login data
 <script>
   handshake.script.addEventListener('handshake:login_confirm', function(e) {
     console.log(e.data);
-    $.post("/login/success", {email: e.data.identity.email}, function(data) {
+    $.post("/login/success", {email: e.data.identity.email, hash: e.data.identity.hash}, function(data) {
       window.location.href = "/dashboard";
     });    
   }, false); 
@@ -52,7 +52,10 @@ See [full example nodejs app](https://github.com/scottmotte/handshake-example-no
 
 ```ruby
 post "/login/success" do
-  session[:user] = params[:email]
+  salt    = "the_secret_salt_when_you_created_an_app_that_only_you_should_know"
+  pbkdf2  = PBKDF2.new(:password=>params[:email], :salt=>salt, :iterations=>1000, :key_length => 16, :hash_function => "sha1")
+
+  session[:user] = params[:email] if pbkdf2.hex_string == params[:hash]
   redirect "/dashboard"
 end
 ```
