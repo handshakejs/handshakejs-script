@@ -40,9 +40,14 @@ Lastly, setup a /login/success route to set your app's session. There are exampl
 ##### Node.js Example
 
 ```ruby
+var handshakejs = require('handshakejs')('YOUR_SALT');
 app.post('/login/success', function(req, res) {
-  req.session.user = req.body.email;
-  res.redirect('/dashboard');
+  handshakejs.validate({email: req.body.email, hash: req.body.hash}, function(err, result) {
+    if (!err) {
+      req.session.user = req.body.email;
+    }
+    res.redirect('/dashboard');
+  });
 });
 ```
 
