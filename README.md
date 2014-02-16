@@ -52,10 +52,11 @@ See [full example nodejs app](https://github.com/scottmotte/handshake-example-no
 
 ```ruby
 post "/login/success" do
-  salt    = "the_secret_salt_when_you_created_an_app_that_only_you_should_know"
-  pbkdf2  = PBKDF2.new(:password=>params[:email], :salt=>salt, :iterations=>1000, :key_length => 16, :hash_function => "sha1")
+  Handshakejs.salt = ENV['SALT']  
+  result = Handshakejs.validate({email: params[:email], hash: params[:hash]})
 
-  session[:user] = params[:email] if pbkdf2.hex_string == params[:hash]
+  session[:user] = params[:email] if result
+
   redirect "/dashboard"
 end
 ```
