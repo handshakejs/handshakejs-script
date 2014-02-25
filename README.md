@@ -1,6 +1,6 @@
-# [handshake.js](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js)
+# [handshakejs-script](https://github.com/handshakejs/handshakejs-script/blob/master/build/handshake.js)
 
-![](https://rawgithub.com/scottmotte/handshake-js/master/handshakejs.svg)
+![](https://rawgithub.com/handshakejs/handshakejs-script/master/handshakejs.svg)
 
 ## Usage
 
@@ -10,7 +10,7 @@ First, [register your app_name](http://handshakejs-signup.herokuapp.com/).
 
 #### Add script tag
 
-Next, place the [handshake.js](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js) script tag where you want the login form displayed. 
+Next, place the [handshake.js](https://github.com/handshakejs/handshakejs-script/blob/master/build/handshake.js) script tag where you want the login form displayed. 
 
 ```html
 <script src='/path/to/handshake.js' 
@@ -18,7 +18,7 @@ Next, place the [handshake.js](https://github.com/scottmotte/handshake-js/blob/m
         data-root_url="https://handshakejs.herokuapp.com"></script>
 ```
 
-(Get the latest [handshake.js here](https://github.com/scottmotte/handshake-js/blob/master/build/handshake.js). Replace the `data-app_name` with the one you registered.)
+(Get the latest [handshake.js here](https://github.com/handshakejs/handshakejs-script/blob/master/build/handshake.js). Replace the `data-app_name` with the one you registered.)
 
 Next, bind to the handshake:login_confirm event to get the successful login data. This is where you would make an internal request to your application to set the session for the user.
 
@@ -51,7 +51,7 @@ app.post('/login/success', function(req, res) {
 });
 ```
 
-See [full example nodejs app](https://github.com/scottmotte/handshake-example-nodejs).
+See [full example nodejs app](https://github.com/handshakejs/handshakejs-example-nodejs).
 
 ##### Ruby Example
 
@@ -66,11 +66,11 @@ post "/login/success" do
 end
 ```
 
-See [full example ruby app](https://github.com/scottmotte/handshake-example-ruby).
+See [full example ruby app](https://github.com/handshakejs/handshakejs-example-ruby).
 
 ## Video Demo
 
-[![](https://raw.github.com/scottmotte/handshake-js/master/handshake-vimeo.png)](https://vimeo.com/79125268)
+[![](https://raw.github.com/handshakejs/handshakejs-script/master/handshake-vimeo.png)](https://vimeo.com/79125268)
 
 ## Dev Setup
 
