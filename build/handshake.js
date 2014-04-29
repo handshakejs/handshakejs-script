@@ -1,4 +1,4 @@
-/*! handshake-js.js - 0.0.1 - 2013-10-26 - scottmotte */
+/*! handshake-js.js - 0.0.1 - 2014-04-28 - scottmotte */
 (function(exports){
   var Handshake = function() {
     if(!(this instanceof Handshake)){
@@ -65,7 +65,7 @@
     this.email_submit_btn.className     = "handshake-email-submit-btn";
     this.email_submit_btn.id            = "handshake-email-submit-btn-"+this.uuid;
     this.email_submit_btn.type          = "submit";
-    this.email_submit_btn.value         = "Request Login";
+    this.email_submit_btn.value         = "Create Account";
       
     return this.email_form.appendChild(this.email_submit_btn);
   };
@@ -92,7 +92,7 @@
     this.authcode_submit_btn.className      = "handshake-authcode-submit-btn";
     this.authcode_submit_btn.id             = "handshake-authcode-submit-btn-"+this.uuid;
     this.authcode_submit_btn.type           = "submit";
-    this.authcode_submit_btn.value          = "Confirm Login";
+    this.authcode_submit_btn.value          = "Login";
       
     return this.authcode_form.appendChild(this.authcode_submit_btn);
   };
