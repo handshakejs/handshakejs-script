@@ -6,6 +6,7 @@
     this._drawEmailField();
     this._drawEmailSubmitBtn();
     this._drawAuthcodeForm();
+    this._drawAuthcodeIntro();
     this._drawAuthcodeField();
     this._drawAuthcodeSubmitBtn();
   };
@@ -32,6 +33,7 @@
     this.email_field                    = document.createElement('input');
     this.email_field.className          = "handshake-email-field";
     this.email_field.id                 = "handshake-email-field-id-"+this.uuid;
+    this.email_field.type               = "email";
     this.email_field.placeholder        = "email";
 
     return this.email_form.appendChild(this.email_field);
@@ -41,9 +43,9 @@
     this.email_intro              = document.createElement('p');
     this.email_intro.className    = "handshake-email-intro";
     this.email_intro.id           = "handshake-email-intro-id-"+this.uuid;
-    this.email_intro.value        = "This is the easiest signup process. Just enter your email address.";
+    this.email_intro.innerHTML    = "This is the easiest signup process.<br/>Just enter your email address.";
 
-    return this.email_form.appendChild(this.email_field);
+    return this.email_form.appendChild(this.email_intro);
   };
 
   Handshake.prototype._drawAuthcodeForm = function() {
@@ -68,9 +70,18 @@
     this.authcode_field                     = document.createElement('input');
     this.authcode_field.className           = "handshake-authcode-field";
     this.authcode_field.id                  = "handshake-authcode-field-id-"+this.uuid;
-    this.authcode_field.placeholder         = "authcode";    
+    this.authcode_field.maxLength           = 4;
 
     return this.authcode_form.appendChild(this.authcode_field);
+  };
+
+  Handshake.prototype._drawAuthcodeIntro = function() {
+    this.authcode_intro              = document.createElement('p');
+    this.authcode_intro.className    = "handshake-authcode-intro";
+    this.authcode_intro.id           = "handshake-authcode-intro-id-"+this.uuid;
+    this.authcode_intro.innerHTML    = "Go ahead and check your email.<br/>Enter the code you received here.";
+
+    return this.authcode_form.appendChild(this.authcode_intro);
   };
 
 }(Handshake));

@@ -29,6 +29,7 @@
   Handshake.prototype._showAuthcodeFormOnly = function() {
     this.addClass(this.email_form, "handshake-hidden");
     this.removeClass(this.authcode_form, "handshake-hidden");
+    this.authcode_field.focus();
   };
 
   Handshake.prototype.requestLogin = function(e) {

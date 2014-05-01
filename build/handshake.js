@@ -1,4 +1,4 @@
-/*! handshake-js.js - 0.0.1 - 2014-04-28 - scottmotte */
+/*! handshake-js.js - 0.0.1 - 2014-05-01 - scottmotte */
 (function(exports){
   var Handshake = function() {
     if(!(this instanceof Handshake)){
@@ -45,9 +45,11 @@
   Handshake.prototype.draw = function() {
     this._drawCss();
     this._drawEmailForm();
+    this._drawEmailIntro();
     this._drawEmailField();
     this._drawEmailSubmitBtn();
     this._drawAuthcodeForm();
+    this._drawAuthcodeIntro();
     this._drawAuthcodeField();
     this._drawAuthcodeSubmitBtn();
   };
@@ -74,9 +76,19 @@
     this.email_field                    = document.createElement('input');
     this.email_field.className          = "handshake-email-field";
     this.email_field.id                 = "handshake-email-field-id-"+this.uuid;
+    this.email_field.type               = "email";
     this.email_field.placeholder        = "email";
 
     return this.email_form.appendChild(this.email_field);
+  };
+
+  Handshake.prototype._drawEmailIntro = function() {
+    this.email_intro              = document.createElement('p');
+    this.email_intro.className    = "handshake-email-intro";
+    this.email_intro.id           = "handshake-email-intro-id-"+this.uuid;
+    this.email_intro.innerHTML    = "This is the easiest signup process.<br/>Just enter your email address.";
+
+    return this.email_form.appendChild(this.email_intro);
   };
 
   Handshake.prototype._drawAuthcodeForm = function() {
@@ -101,9 +113,18 @@
     this.authcode_field                     = document.createElement('input');
     this.authcode_field.className           = "handshake-authcode-field";
     this.authcode_field.id                  = "handshake-authcode-field-id-"+this.uuid;
-    this.authcode_field.placeholder         = "authcode";    
+    this.authcode_field.maxLength           = 4;
 
     return this.authcode_form.appendChild(this.authcode_field);
+  };
+
+  Handshake.prototype._drawAuthcodeIntro = function() {
+    this.authcode_intro              = document.createElement('p');
+    this.authcode_intro.className    = "handshake-authcode-intro";
+    this.authcode_intro.id           = "handshake-authcode-intro-id-"+this.uuid;
+    this.authcode_intro.innerHTML    = "Go ahead and check your email.<br/>Enter the code you received here.";
+
+    return this.authcode_form.appendChild(this.authcode_intro);
   };
 
 }(Handshake));
@@ -140,6 +161,7 @@
   Handshake.prototype._showAuthcodeFormOnly = function() {
     this.addClass(this.email_form, "handshake-hidden");
     this.removeClass(this.authcode_form, "handshake-hidden");
+    this.authcode_field.focus();
   };
 
   Handshake.prototype.requestLogin = function(e) {
