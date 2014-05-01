@@ -175,6 +175,7 @@
 
     self.Post(url, payload, function(resp) {
       if (!!resp.success) {
+        self.FireEvent("handshake:request_confirm", self.script, resp);
         self._showAuthcodeFormOnly();
       } else { 
         self._showEmailFormOnly();
