@@ -71,7 +71,6 @@
     this.authcode_field.className           = "handshake-authcode-field";
     this.authcode_field.id                  = "handshake-authcode-field-id-"+this.uuid;
     this.authcode_field.maxLength           = 4;
-    this.authcode_field.type                = "number";
     this.authcode_field.inputmode           = "numeric";
     this.authcode_field.pattern             = "[0-9]*";
 
