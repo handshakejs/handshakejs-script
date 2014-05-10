@@ -1,4 +1,4 @@
-/*! handshake-js.js - 0.0.1 - 2014-05-01 - scottmotte */
+/*! handshake-js.js - 0.0.1 - 2014-05-09 - scottmotte */
 (function(exports){
   var Handshake = function() {
     if(!(this instanceof Handshake)){
@@ -114,6 +114,9 @@
     this.authcode_field.className           = "handshake-authcode-field";
     this.authcode_field.id                  = "handshake-authcode-field-id-"+this.uuid;
     this.authcode_field.maxLength           = 4;
+    this.authcode_field.type                = "number";
+    this.authcode_field.inputmode           = "numeric";
+    this.authcode_field.pattern             = "[0-9]*";
 
     return this.authcode_form.appendChild(this.authcode_field);
   };
