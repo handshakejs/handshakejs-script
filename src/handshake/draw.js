@@ -24,7 +24,7 @@
     this.email_submit_btn.className     = "handshake-email-submit-btn";
     this.email_submit_btn.id            = "handshake-email-submit-btn-"+this.uuid;
     this.email_submit_btn.type          = "submit";
-    this.email_submit_btn.value         = "Create Account";
+    this.email_submit_btn.value         = this.request_button;
       
     return this.email_form.appendChild(this.email_submit_btn);
   };
@@ -43,7 +43,7 @@
     this.email_intro              = document.createElement('p');
     this.email_intro.className    = "handshake-email-intro";
     this.email_intro.id           = "handshake-email-intro-id-"+this.uuid;
-    this.email_intro.innerHTML    = "This is the easiest signup process.<br/>Just enter your email address.";
+    this.email_intro.innerHTML    = this.request_intro;
 
     return this.email_form.appendChild(this.email_intro);
   };
@@ -61,7 +61,7 @@
     this.authcode_submit_btn.className      = "handshake-authcode-submit-btn";
     this.authcode_submit_btn.id             = "handshake-authcode-submit-btn-"+this.uuid;
     this.authcode_submit_btn.type           = "submit";
-    this.authcode_submit_btn.value          = "Login";
+    this.authcode_submit_btn.value          = this.confirm_button;
       
     return this.authcode_form.appendChild(this.authcode_submit_btn);
   };
@@ -82,7 +82,7 @@
     this.authcode_intro              = document.createElement('p');
     this.authcode_intro.className    = "handshake-authcode-intro";
     this.authcode_intro.id           = "handshake-authcode-intro-id-"+this.uuid;
-    this.authcode_intro.innerHTML    = "Go ahead and check your email.<br/>Enter the code you received here.";
+    this.authcode_intro.innerHTML    = this.confirm_intro;
 
     return this.authcode_form.appendChild(this.authcode_intro);
   };

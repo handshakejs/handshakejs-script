@@ -1,4 +1,4 @@
-/*! handshake-js.js - 0.0.1 - 2014-05-09 - scottmotte */
+/*! handshake-js.js - 0.0.1 - 2014-05-19 - scottmotte */
 (function(exports){
   var Handshake = function() {
     if(!(this instanceof Handshake)){
@@ -15,10 +15,14 @@
   Handshake.prototype.init = function() {
     if (this.script) {
       this.script.className += " handshake-script";
-      this.script.id        = "handshake-script-"+this.uuid;
-      this.app_name         = this.script.getAttribute("data-app_name");
-      this.root_url         = this.script.getAttribute("data-root_url");
-      this.confirm_url      = this.script.getAttribute("data-confirm_url") || "/login/request.json";
+      this.script.id              = "handshake-script-"+this.uuid;
+      this.app_name               = this.script.getAttribute("data-app_name");
+      this.root_url               = this.script.getAttribute("data-root_url");
+      this.request_intro          = this.script.getAttribute("data-request_intro") || "This is the easiest signup process.<br/>Just enter your email address.";
+      this.request_button         = this.script.getAttribute("data-request_button") || "Create Account";
+      this.confirm_intro          = this.script.getAttribute("data-confirm_intro") || "Go ahead and check your email.<br/>Enter the code you received here.";
+      this.confirm_button         = this.script.getAttribute("data-confirm_button") || "Login";
+      this.confirm_url            = this.script.getAttribute("data-confirm_url") || "/login/request.json";
 
       if (!this.app_name || this.app_name.length < 1) {
         console.error("Warning: data-app_name not set on script tag. Set to the app_name you setup."); 
@@ -67,7 +71,7 @@
     this.email_submit_btn.className     = "handshake-email-submit-btn";
     this.email_submit_btn.id            = "handshake-email-submit-btn-"+this.uuid;
     this.email_submit_btn.type          = "submit";
-    this.email_submit_btn.value         = "Create Account";
+    this.email_submit_btn.value         = this.request_button;
       
     return this.email_form.appendChild(this.email_submit_btn);
   };
@@ -86,7 +90,7 @@
     this.email_intro              = document.createElement('p');
     this.email_intro.className    = "handshake-email-intro";
     this.email_intro.id           = "handshake-email-intro-id-"+this.uuid;
-    this.email_intro.innerHTML    = "This is the easiest signup process.<br/>Just enter your email address.";
+    this.email_intro.innerHTML    = this.request_intro;
 
     return this.email_form.appendChild(this.email_intro);
   };
@@ -104,7 +108,7 @@
     this.authcode_submit_btn.className      = "handshake-authcode-submit-btn";
     this.authcode_submit_btn.id             = "handshake-authcode-submit-btn-"+this.uuid;
     this.authcode_submit_btn.type           = "submit";
-    this.authcode_submit_btn.value          = "Login";
+    this.authcode_submit_btn.value          = this.confirm_button;
       
     return this.authcode_form.appendChild(this.authcode_submit_btn);
   };
@@ -114,7 +118,7 @@
     this.authcode_field.className           = "handshake-authcode-field";
     this.authcode_field.id                  = "handshake-authcode-field-id-"+this.uuid;
     this.authcode_field.maxLength           = 4;
-    this.authcode_field.type                = "number";
+    this.authcode_field.type                = "text";
     this.authcode_field.inputmode           = "numeric";
     this.authcode_field.pattern             = "[0-9]*";
 
@@ -125,7 +129,7 @@
     this.authcode_intro              = document.createElement('p');
     this.authcode_intro.className    = "handshake-authcode-intro";
     this.authcode_intro.id           = "handshake-authcode-intro-id-"+this.uuid;
-    this.authcode_intro.innerHTML    = "Go ahead and check your email.<br/>Enter the code you received here.";
+    this.authcode_intro.innerHTML    = this.confirm_intro;
 
     return this.authcode_form.appendChild(this.authcode_intro);
   };
