@@ -29,6 +29,7 @@
   Handshake.prototype._showAuthcodeFormOnly = function() {
     this.addClass(this.email_form, "handshake-hidden");
     this.removeClass(this.authcode_form, "handshake-hidden");
+    this.authcode_field.focus();
   };
 
   Handshake.prototype.requestLogin = function(e) {
@@ -42,6 +43,7 @@
 
     self.Post(url, payload, function(resp) {
       if (!!resp.success) {
+        self.FireEvent("handshake:request_confirm", self.script, resp);
         self._showAuthcodeFormOnly();
       } else { 
         self._showEmailFormOnly();

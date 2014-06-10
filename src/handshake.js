@@ -14,10 +14,14 @@
   Handshake.prototype.init = function() {
     if (this.script) {
       this.script.className += " handshake-script";
-      this.script.id        = "handshake-script-"+this.uuid;
-      this.app_name         = this.script.getAttribute("data-app_name");
-      this.root_url         = this.script.getAttribute("data-root_url");
-      this.confirm_url      = this.script.getAttribute("data-confirm_url") || "/login/request.json";
+      this.script.id              = "handshake-script-"+this.uuid;
+      this.app_name               = this.script.getAttribute("data-app_name");
+      this.root_url               = this.script.getAttribute("data-root_url");
+      this.request_intro          = this.script.getAttribute("data-request_intro") || "This is the easiest signup process.<br/>Just enter your email address.";
+      this.request_button         = this.script.getAttribute("data-request_button") || "Verify Email";
+      this.confirm_intro          = this.script.getAttribute("data-confirm_intro") || "Go ahead and check your email.<br/>Enter the code you received here.";
+      this.confirm_button         = this.script.getAttribute("data-confirm_button") || "Create Account";
+      this.confirm_url            = this.script.getAttribute("data-confirm_url") || "/login/request.json";
 
       if (!this.app_name || this.app_name.length < 1) {
         console.error("Warning: data-app_name not set on script tag. Set to the app_name you setup."); 
